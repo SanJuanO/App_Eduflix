@@ -1,0 +1,6 @@
+framework module Pods_EduflixTests {
+  umbrella header "Pods-EduflixTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

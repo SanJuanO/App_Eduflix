@@ -9,6 +9,8 @@ import UIKit
 
 class ContraViewController: UIViewController {
 
+    @IBOutlet weak var correo: UITextField!
+    @IBOutlet weak var cargador: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,6 +18,9 @@ class ContraViewController: UIViewController {
     }
     
 
+    @IBAction func recuperar(_ sender: Any) {
+        performSegue(withIdentifier: "login", sender: self)
+    }
     /*
     // MARK: - Navigation
 

@@ -8,5 +8,13 @@
 import UIKit
 
 class ConferenciaCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var titulo: UILabel!
+    @IBOutlet weak var curso: UILabel!
+    @IBOutlet weak var fecha: UILabel!
+
+    @IBOutlet weak var hora: UILabel!
+    
+    
+    
     
 }

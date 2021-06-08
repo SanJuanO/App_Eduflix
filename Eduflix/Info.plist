@@ -62,5 +62,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Ubuntu-Regular.ttf</string>
+		<string>Gilroy.Light.otf</string>
+		<string>Giroy-ExtraBold.otf</string>
+	</array>
 </dict>
 </plist>
