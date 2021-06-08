@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>237024648791-9pnhi4196nf2o6r1pvgnv2l01349g8pu.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.237024648791-9pnhi4196nf2o6r1pvgnv2l01349g8pu</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCzApJT7Y_oRD3fagEJoMEvPhsqHNqMaqo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>237024648791</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>gesdes.com.Eduflix</string>
+	<key>PROJECT_ID</key>
+	<string>eduflix-c168e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>eduflix-c168e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:237024648791:ios:453d7162899f7439fc4d12</string>
+</dict>
+</plist>
