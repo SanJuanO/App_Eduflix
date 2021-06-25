@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import WebKit
+
 
 class noticiasCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titulo: UILabel!
     @IBOutlet weak var fecha: UILabel!
 
-
-    @IBOutlet weak var contenido: UILabel!
+    
 
 }

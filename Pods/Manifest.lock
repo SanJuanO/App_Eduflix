@@ -51,15 +51,21 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (7.3.1):
     - GoogleUtilities/Logger
+  - Kingfisher (6.3.0)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (1.2.12)
+  - RNCryptor (5.1.0)
+  - SideMenu (6.5.0)
 
 DEPENDENCIES:
   - Firebase/Messaging
+  - Kingfisher (~> 6.0)
+  - RNCryptor (~> 5.0)
+  - SideMenu
 
 SPEC REPOS:
   trunk:
@@ -71,8 +77,11 @@ SPEC REPOS:
     - FirebaseMessaging
     - GoogleDataTransport
     - GoogleUtilities
+    - Kingfisher
     - nanopb
     - PromisesObjC
+    - RNCryptor
+    - SideMenu
 
 SPEC CHECKSUMS:
   Firebase: fffddd0bab8677d07376538365faa93ff3889b39
@@ -83,9 +92,12 @@ SPEC CHECKSUMS:
   FirebaseMessaging: 76b3058cef7f339cf10db196e03bbbb2165fb5d7
   GoogleDataTransport: cd9db2180fcecd8da1b561aea31e3e56cf834aa7
   GoogleUtilities: e1d9ed4e544fc32a93e00e721400cbc3f377200d
+  Kingfisher: 6c3df386db71d82c0817a429d2c9421a77396529
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  RNCryptor: a369134686cd2ad391323cc856b62e591193ba79
+  SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
 
-PODFILE CHECKSUM: e8ee0646c4f0bc4029793a00d19fffbfda0c9b78
+PODFILE CHECKSUM: bab4c79468d397769d9879d9e1ba15c200225508
 
 COCOAPODS: 1.9.3

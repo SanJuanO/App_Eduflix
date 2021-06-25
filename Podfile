@@ -4,6 +4,10 @@
 target 'Eduflix' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
+  pod 'Kingfisher', '~> 6.0'
+pod 'SideMenu'
+pod 'RNCryptor', '~> 5.0'
+
 pod 'Firebase/Messaging'
   # Pods for Eduflix
 

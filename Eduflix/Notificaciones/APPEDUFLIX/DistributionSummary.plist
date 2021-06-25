@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Eduflix.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>817FCEF2A76D9A516FBF46B2A82D9B8044FA747A</string>
+				<key>dateExpires</key>
+				<string>28/04/22</string>
+				<key>type</key>
+				<string>Apple Development</string>
+			</dict>
+			<key>embeddedBinaries</key>
+			<array>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>817FCEF2A76D9A516FBF46B2A82D9B8044FA747A</string>
+						<key>dateExpires</key>
+						<string>28/04/22</string>
+						<key>type</key>
+						<string>Apple Development</string>
+					</dict>
+					<key>name</key>
+					<string>FBLPromises.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>JC7FF53NVY</string>
+						<key>name</key>
+						<string>Jose Carlos Ruiz Garcia</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>817FCEF2A76D9A516FBF46B2A82D9B8044FA747A</string>
+						<key>dateExpires</key>
+						<string>28/04/22</string>
+						<key>type</key>
+						<string>Apple Development</string>
+					</dict>
+					<key>name</key>
+					<string>FirebaseCore.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>JC7FF53NVY</string>
+						<key>name</key>
+						<string>Jose Carlos Ruiz Garcia</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>817FCEF2A76D9A516FBF46B2A82D9B8044FA747A</string>
+						<key>dateExpires</key>
+						<string>28/04/22</string>
+						<key>type</key>
+						<string>Apple Development</string>
+					</dict>
+					<key>name</key>
+					<string>FirebaseCoreDiagnostics.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>JC7FF53NVY</string>
+						<key>name</key>
+						<string>Jose Carlos Ruiz Garcia</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>817FCEF2A76D9A516FBF46B2A82D9B8044FA747A</string>
+						<key>dateExpires</key>
+						<string>28/04/22</string>
+						<key>type</key>
+						<string>Apple Development</string>
+					</dict>
+					<key>name</key>
+					<string>FirebaseInstallations.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>JC7FF53NVY</string>
+						<key>name</key>
+						<string>Jose Carlos Ruiz Garcia</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>817FCEF2A76D9A516FBF46B2A82D9B8044FA747A</string>
+						<key>dateExpires</key>
+						<string>28/04/22</string>
+						<key>type</key>
+						<string>Apple Development</string>
+					</dict>
+					<key>name</key>
+					<string>FirebaseInstanceID.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>JC7FF53NVY</string>
+						<key>name</key>
+						<string>Jose Carlos Ruiz Garcia</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>817FCEF2A76D9A516FBF46B2A82D9B8044FA747A</string>
+						<key>dateExpires</key>
+						<string>28/04/22</string>
+						<key>type</key>
+						<string>Apple Development</string>
+					</dict>
+					<key>name</key>
+					<string>FirebaseMessaging.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>JC7FF53NVY</string>
+						<key>name</key>
+						<string>Jose Carlos Ruiz Garcia</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>817FCEF2A76D9A516FBF46B2A82D9B8044FA747A</string>
+						<key>dateExpires</key>
+						<string>28/04/22</string>
+						<key>type</key>
+						<string>Apple Development</string>
+					</dict>
+					<key>name</key>
+					<string>GoogleDataTransport.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>JC7FF53NVY</string>
+						<key>name</key>
+						<string>Jose Carlos Ruiz Garcia</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>817FCEF2A76D9A516FBF46B2A82D9B8044FA747A</string>
+						<key>dateExpires</key>
+						<string>28/04/22</string>
+						<key>type</key>
+						<string>Apple Development</string>
+					</dict>
+					<key>name</key>
+					<string>GoogleUtilities.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>JC7FF53NVY</string>
+						<key>name</key>
+						<string>Jose Carlos Ruiz Garcia</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>817FCEF2A76D9A516FBF46B2A82D9B8044FA747A</string>
+						<key>dateExpires</key>
+						<string>28/04/22</string>
+						<key>type</key>
+						<string>Apple Development</string>
+					</dict>
+					<key>name</key>
+					<string>Kingfisher.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>JC7FF53NVY</string>
+						<key>name</key>
+						<string>Jose Carlos Ruiz Garcia</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>817FCEF2A76D9A516FBF46B2A82D9B8044FA747A</string>
+						<key>dateExpires</key>
+						<string>28/04/22</string>
+						<key>type</key>
+						<string>Apple Development</string>
+					</dict>
+					<key>name</key>
+					<string>nanopb.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>JC7FF53NVY</string>
+						<key>name</key>
+						<string>Jose Carlos Ruiz Garcia</string>
+					</dict>
+				</dict>
+			</array>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>JC7FF53NVY.gesdes.com.Eduflix</string>
+				<key>aps-environment</key>
+				<string>development</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>JC7FF53NVY</string>
+				<key>get-task-allow</key>
+				<true/>
+			</dict>
+			<key>name</key>
+			<string>Eduflix.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>6a96fc04-09e0-4b77-8372-5d7936dddef3</string>
+				<key>name</key>
+				<string>iOS Team Provisioning Profile: gesdes.com.Eduflix</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>JC7FF53NVY</string>
+				<key>name</key>
+				<string>Jose Carlos Ruiz Garcia</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

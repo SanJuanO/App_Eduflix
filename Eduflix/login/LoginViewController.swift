@@ -12,17 +12,81 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var usuario: UITextField!
     @IBOutlet weak var cargador: UIActivityIndicatorView!
+    @IBOutlet weak var mantenersesion: UISwitch!
     let defaults = UserDefaults.standard
-
+var id=0
+    @IBOutlet weak var btninvitado: UIButton!
     @IBOutlet weak var buttoningresar: UIButton!
+    
+    
+    @IBOutlet weak var facebook: UIButton!
+    @IBOutlet weak var google: UIButton!
+    
+    @IBOutlet weak var logo: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         cargador.isHidden = true
-        usuario.text = "laura.lopez"
-        password.text = "LauLoHe*01"
+        usuario.text = "dante.bouquet"
+        password.text = "zoarciano"
+        logo.layer.cornerRadius = 15
+        
+    
+        buttoningresar.layer.cornerRadius = 15
+        buttoningresar.layer.borderWidth = 1
+   
+        
+        google.layer.cornerRadius = 15
+        google.layer.borderWidth = 1
+        google.backgroundColor = UIColor.white
+        google.layer.borderColor = UIColor.black.cgColor
+        
+        facebook.layer.cornerRadius = 15
+        facebook.layer.borderWidth = 1
+        facebook.backgroundColor = UIColor.white
+        facebook.layer.borderColor = UIColor.black.cgColor
+        
+        
+        if isKeyPresentInUserDefaults(key: "sesion") {
+             let pk = UserDefaults.standard.string(forKey: "id")!
+                     if pk != ""{
+                         if pk == "0"{
+                             self.defaults.removeObject(forKey: "id")
+                                           self.defaults.removeObject( forKey: "nombre")
+                            self.defaults.removeObject( forKey: "sesion")
+                                           self.defaults.removeObject( forKey: "id_nivel")
+                                           self.defaults.removeObject(forKey: "id_rol")
+                                           self.defaults.removeObject( forKey: "foto")
+                                           self.defaults.removeObject(forKey: "telefono")
+                            self.defaults.removeObject(forKey: "correo")
+                            self.defaults.removeObject(forKey: "usuario")
+                            self.defaults.removeObject(forKey: "grupo")
+                            self.defaults.removeObject(forKey: "id_grupo")
+                            self.defaults.removeObject(forKey: "rolname")
+
+                            self.defaults.removeObject(forKey: "password")
+
+                         
+                            
+                       
+                         }else{
+                         usuario.text = UserDefaults.standard.string(forKey: "usuario")!
+                         password.text = UserDefaults.standard.string(forKey: "password")!
+                            cargador.isHidden = false
+                     cargador.startAnimating()
+ ing()
+                         
+         }
+         }
+         
+         }
     }
     
-
+    func isKeyPresentInUserDefaults(key: String) -> Bool {
+        return UserDefaults.standard.string(forKey: key) != nil
+    }
 
     func isValidEmail(emailID:String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
@@ -85,17 +149,29 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
             self.defaults.set(pass, forKey: "password")
             self.defaults.set(dictionary["id_grupo"], forKey: "id_grupo")
             self.defaults.set(dictionary["grupo"], forKey: "grupo")
-           
+            if(self.mantenersesion.isOn){
+                self.defaults.set("si", forKey: "sesion")
+
+            }
+
             self.defaults.set(dictionary["id_nivel"], forKey: "id_nivel")
             self.defaults.set(dictionary["id_rol"], forKey: "id_rol")
             self.defaults.set(dictionary["rolname"], forKey: "rolname")
-            self.defaults.set(dictionary["acercademi"], forKey: "acercademi")
-            if let matt = dictionary["matricula"] as? String
+          
+            if (dictionary["matricula"] as? String) != nil
             {
             self.defaults.set(dictionary["matricula"] as? String, forKey: "matricula")
+            }else{
+                self.defaults.set("", forKey: "matricula")
             }
-           // self.actualiartoken()
-            self.performSegue(withIdentifier: "inicio", sender: self)
+            self.id = (dictionary["id"] as! Int)
+            if(dictionary["id_rol"] as! Int == 3){
+            self.consultacursos()
+            self.consultamensajes()
+            }else {
+                self.actualiartoken()
+
+            }
         }
         
     }
@@ -119,7 +195,32 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     }
     }
   
+    @IBAction func invitado(_ sender: Any) {
+        
+        self.defaults.set(0, forKey: "id")
+        
+            let completo = "Invitado"
+        self.defaults.set(completo, forKey: "nombre")
+            self.defaults.set("invitado", forKey: "foto")
+        self.defaults.set("----", forKey: "telefono")
+            self.defaults.set("iim@iim.com", forKey: "correo")
+            self.defaults.set("invitado", forKey: "usuario")
+            self.defaults.set("invitado", forKey: "password")
+        self.defaults.set("invitado", forKey: "id_grupo")
+            self.defaults.set("invitado", forKey: "grupo")
+           
+            self.defaults.set(1, forKey: "id_nivel")
+            self.defaults.set(1, forKey: "id_rol")
+            self.defaults.set("invitado", forKey: "rolname")
+            self.defaults.set("invitado", forKey: "acercademi")
+           
+            self.defaults.set("inivitado", forKey: "matricula")
+                    
+        self.performSegue(withIdentifier: "inicio", sender: self)
 
+                           
+    }
+    
     @IBAction func login(_ sender: Any) {
        ing()
         
@@ -145,27 +246,120 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
     
     func actualiartoken() {
-          guard let token = Messaging.messaging().fcmToken else { return  }
-           print("TOKEN", token)
-           let us =  UserDefaults.standard.string(forKey: "pkuser")!
-           
-        let datos_a_enviar = ["PK": us  as Any,"TOKEN": token as Any,"PLATAFORMA":"IOS"] as NSMutableDictionary
+         guard let token = Messaging.messaging().fcmToken else { return  }
+     
+        let datos_a_enviar = ["id": self.id  as Any,"token": token as Any] as NSMutableDictionary
            //ejecutamos la función arrayFromJson con los parámetros correspondientes (url archivo .php / datos a enviar)
-           let dataJsonUrlClass = Conexion()
-           dataJsonUrlClass.arrayFromJson(url2:"CambiaToken",datos_enviados:datos_a_enviar){ (datos_recibidos) in
+           let dataJsonUrlClass = ConexionPost()
+           dataJsonUrlClass.arrayFromJson(url2:"Usuarios/updateToken",datos_enviados:datos_a_enviar){ (datos_recibidos) in
                
                DispatchQueue.main.async {//proceso principal
                    print("token actualizado")
-                   self.defaults.set("", forKey: "estado")
                               
-                           
+                self.performSegue(withIdentifier: "inicio", sender: self)
+
                
-                              self.performSegue(withIdentifier: "gohome", sender: self)
                    
                }
                
            }
         
+        
+    }
+    
+       func consultamensajes(){
+     
+          let id_ = UserDefaults.standard.string(forKey: "id")!
+           let id = Int(id_)
+        let datos_a_enviar = ["id_usuario": self.id as Any] as NSMutableDictionary
+
+           //ejecutamos la función arrayFromJson con los parámetros correspondientes (url archivo .php / datos a enviar)
+           let dataJsonUrlClass = ConexionPost()
+           dataJsonUrlClass.arrayFromJson(url2:"Notificaciones/getByIdUsuario",datos_enviados:datos_a_enviar){ (datos_recibidos) in
+               DispatchQueue.main.async {
+                   self.cargador.isHidden = true
+                   //proceso principal
+                   
+   if let dictionary = datos_recibidos as? [String: Any] {
+                       
+                       if let array = dictionary["datos"] as? NSArray {
+                                         
+                        self.defaults.set(array.count, forKey: "mensajes")
+
+                         
+                       }
+          
+                   }
+               }
+               
+           }
+       }
+    
+    
+    func consultacursos(){
+      
+        let datos_a_enviar = ["id": self.id as Int] as NSMutableDictionary
+        var arraycursos:[String]=[]
+        var idarraycursos:[Int]=[]
+        var imagencursos:[String]=[]
+        var profesores:[String]=[]
+
+        //ejecutamos la función arrayFromJson con los parámetros correspondientes (url archivo .php / datos a enviar)
+        let dataJsonUrlClass = ConexionPost()
+        dataJsonUrlClass.arrayFromJson(url2:"Cursos/getByIdUser",datos_enviados:datos_a_enviar){ (datos_recibidos) in
+            DispatchQueue.main.async {
+                self.cargador.isHidden = true
+                //proceso principal
+                
+if let dictionary = datos_recibidos as? [String: Any] {
+                    
+                    if let array = dictionary["datos"] as? NSArray {
+                                      
+
+                        for obj in array {
+                            
+                            
+                            if let dict = obj as? NSDictionary {
+                           
+                                arraycursos.append(dict.value(forKey: "curso") as!     String
+                                )
+                             
+                              
+                                idarraycursos.append(dict.value(forKey: "id") as! Int)
+                                if let ur = dict.value(forKey: "profesor") as? String
+                                {
+                                    profesores.append(dict.value(forKey: "profesor") as!     String
+                                    )
+                                    
+                                }else{
+                                    profesores.append("Sin profesor asignado")
+                                    
+                                }
+                             
+                                imagencursos.append(dict.value(forKey: "imagen") as!     String
+                                )
+                     }
+                            
+                            
+                        }
+                        self.defaults.set(arraycursos, forKey: "arraycursos")
+                        self.defaults.set(idarraycursos, forKey: "idarraycursos")
+                        self.defaults.set(profesores, forKey: "profesores")
+                        self.defaults.set(imagencursos, forKey: "imagencursos")
+                        self.actualiartoken()
+                        
+                    }
+       
+                }
+            }
+            
+        }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+      
+  navigationController?.setNavigationBarHidden(true, animated: false)
+
         
     }
 }

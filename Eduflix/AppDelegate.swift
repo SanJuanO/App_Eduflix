@@ -2,7 +2,7 @@ import UIKit
 import Firebase
 import UserNotifications
 @UIApplicationMain
- class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
  
     var window: UIWindow?
  
@@ -26,16 +26,11 @@ import UserNotifications
         }
         
         application.registerForRemoteNotifications()
-      //  self.initFreshchatSDK()
 
         return true
     }
     
-    func initFreshchatSDK() {
-      //  let fchatConfig = FreshchatConfig.init(appID: "e98e8f4f-2b43-4576-ac19-bc5b61fbddc4", andAppKey: "3873e991-8268-48e9-829a-9f8c9c549452") //Enter your AppID and AppKey here
-       // fchatConfig.themeName = "CustomThemeFile"
-        //Freshchat.sharedInstance().initWith(fchatConfig)
-    }
+
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .badge, .sound])
     }
