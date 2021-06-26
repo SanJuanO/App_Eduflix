@@ -8,6 +8,7 @@ import SideMenu
 import RNCryptor
 class SideMenuTableViewController: UITableViewController {
     
+    @IBOutlet weak var contenedor: UIView!
     var id=0
     var contenido=""
     var password=""
@@ -16,7 +17,7 @@ class SideMenuTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
          id = UserDefaults.standard.integer(forKey: "id")
-
+        contenedor.layer.cornerRadius = 10
           
           password = "Secretpasswordiim"
      
@@ -35,7 +36,7 @@ class SideMenuTableViewController: UITableViewController {
      //   tableView.backgroundView = imageView
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(    _ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath) as! UITableViewVibrantCell
 
         if let menu = navigationController as? SideMenuNavigationController {

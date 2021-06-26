@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import RNCryptor
 
 class HomeViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate {
     @IBOutlet weak var fondo: UIView!
@@ -132,7 +133,19 @@ class HomeViewController: UIViewController,UICollectionViewDataSource, UICollect
         }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       
+            // Encryption
+        let url = "https://iim.eduflix.online/public/Login/?="
+
+        let    id = UserDefaults.standard.integer(forKey: "id")
+let           password = "Secretpasswordiim"
+
+        let contenido = "\(id)"+",cursos,"+"\(self.idarraycursos[indexPath.item])"
+            let datos = self.encrypt(plainText: contenido, password: password)
+            if let url = URL(string: url+datos) {
+                UIApplication.shared.open(url)
+            }
+            
+        
     }
     
     
@@ -184,6 +197,11 @@ class HomeViewController: UIViewController,UICollectionViewDataSource, UICollect
         
     }
     
-    
+    func encrypt(plainText : String, password: String) -> String {
+            let data: Data = plainText.data(using: .utf8)!
+            let encryptedData = RNCryptor.encrypt(data: data, withPassword: password)
+            let encryptedString : String = encryptedData.base64EncodedString() // getting base64encoded string of encrypted data.
+            return encryptedString
+    }
     
 }
