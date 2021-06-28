@@ -13,14 +13,18 @@ class MensajesViewController:
     UIViewController,UICollectionViewDataSource, UICollectionViewDelegate,UISearchBarDelegate {
        
    
+    @IBOutlet weak var fondo: UIView!
     @IBOutlet weak var cargador: UIActivityIndicatorView!
         let defaults = UserDefaults.standard
         @IBOutlet weak var collection: UICollectionView!
-
+    var idusuarioenvia=0
+            var idusuariorecibe=0
     @IBOutlet weak var select: UISegmentedControl!
     @IBOutlet weak var alerta: UIBarButtonItem!
     var id:[Int] = []
     var id_suario_envia:[Int] = []
+    var id_suario_recibe:[Int] = []
+
         var nombre:[String] = []
         var foto:[String] = []
     var detalle = 0
@@ -35,12 +39,13 @@ var bid_suario_envia:[Int] = []
     var bfoto:[String] = []
     var bfecha:[String] = []
 
-    
+    var bid_suario_recibe:[Int] = []
+
     @IBOutlet weak var invitado: UIView!
     override func viewDidLoad() {
             super.viewDidLoad()
-        
-            
+        self.cargador.startAnimating()
+        self.fondo.layer.cornerRadius = 15
         let usuario = UserDefaults.standard.string(forKey: "usuario")!
             if(usuario=="invitado"){
                 
@@ -55,7 +60,6 @@ var bid_suario_envia:[Int] = []
                  
 
                 }else{
-                    alertas.isHidden=true
                 }
                 
                 self.invitado.isHidden = true
@@ -81,8 +85,8 @@ var bid_suario_envia:[Int] = []
         self.bnombre.removeAll()
         self.bfoto.removeAll()
         self.bfecha.removeAll()
+        self.bid_suario_recibe.removeAll()
 
-        
         
         var i = 0
         for item in self.nombre {
@@ -94,6 +98,7 @@ var bid_suario_envia:[Int] = []
                 self.bnombre.append(nombre[i])
                 self.bfoto.append(foto[i])
                 self.bfecha.append(fecha[i])
+                self.bid_suario_recibe.append(id_suario_recibe[i])
 
             }
             i = i + 1
@@ -106,6 +111,7 @@ var bid_suario_envia:[Int] = []
             self.bfoto = self.foto
             self.bfecha = self.fecha
 
+            self.bid_suario_recibe = self.id_suario_recibe
 
             
         }
@@ -127,6 +133,8 @@ var bid_suario_envia:[Int] = []
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             self.nombredetalle = self.bnombre[indexPath.item]
 
+             idusuarioenvia=self.id_suario_envia[indexPath.item]
+             idusuariorecibe=self.id_suario_recibe[indexPath.item]
             self.detalle = self.bid_suario_envia[indexPath.item]
             self.performSegue(withIdentifier: "godetalle", sender: self)
         }
@@ -181,6 +189,8 @@ var bid_suario_envia:[Int] = []
         self.id.removeAll()
         self.nombre.removeAll()
         self.id_suario_envia.removeAll()
+        self.id_suario_recibe.removeAll()
+
         self.foto.removeAll()
         self.fecha.removeAll()
        let id_ = UserDefaults.standard.string(forKey: "id")!
@@ -210,6 +220,8 @@ if let dictionary = datos_recibidos as? [String: Any] {
                             
                                 self.id.append(dict.value(forKey: "id") as! Int)
                                 self.nombre.append(dict.value(forKey: "nombre_envia") as! String)
+                                self.id_suario_recibe.append(dict.value(forKey: "id_usuario_recibe") as! Int)
+                               
                                 self.id_suario_envia.append(dict.value(forKey: "id_usuario_envia") as! Int)
                                 self.foto.append(dict.value(forKey: "foto") as! String)
                                 self.fecha.append(dict.value(forKey: "fechar") as! String)
@@ -223,6 +235,7 @@ if let dictionary = datos_recibidos as? [String: Any] {
                         self.bid_suario_envia = self.id_suario_envia
                         self.bfoto = self.foto
                         self.bfecha = self.fecha
+                        self.bid_suario_recibe = self.id_suario_recibe
 
                         self.collection.reloadData()
                     }
@@ -238,15 +251,17 @@ if let dictionary = datos_recibidos as? [String: Any] {
         self.nombre.removeAll()
         self.id_suario_envia.removeAll()
         self.foto.removeAll()
-        self.fecha.removeAll()
+        self.id_suario_recibe.removeAll()
 
+        self.fecha.removeAll()
+        self.cargador.startAnimating()
        let id_ = UserDefaults.standard.string(forKey: "id")!
         let id = Int(id_)
-        let datos_a_enviar = ["id_usuario_recibe": id as Any] as NSMutableDictionary
+        let datos_a_enviar = ["id_usuario_envia": id as Any] as NSMutableDictionary
 
         //ejecutamos la función arrayFromJson con los parámetros correspondientes (url archivo .php / datos a enviar)
         let dataJsonUrlClass = ConexionPost()
-        dataJsonUrlClass.arrayFromJson(url2:"Mensajes/obtenerAgrupadosRecibidosPorIdRecibido",datos_enviados:datos_a_enviar){ (datos_recibidos) in
+        dataJsonUrlClass.arrayFromJson(url2:"Mensajes/obtenerPorIdEnvia",datos_enviados:datos_a_enviar){ (datos_recibidos) in
             DispatchQueue.main.async {
                 self.cargador.isHidden = true
                 //proceso principal
@@ -266,9 +281,11 @@ if let dictionary = datos_recibidos as? [String: Any] {
                               
                             
                                 self.id.append(dict.value(forKey: "id") as! Int)
-                                self.nombre.append(dict.value(forKey: "nombre_envia") as! String)
+                                self.nombre.append(dict.value(forKey: "nombre_recibe") as! String)
                                 self.id_suario_envia.append(dict.value(forKey: "id_usuario_envia") as! Int)
                                 self.foto.append(dict.value(forKey: "foto") as! String)
+                                self.id_suario_recibe.append(dict.value(forKey: "id_usuario_recibe") as! Int)
+                                    
                                 self.fecha.append(dict.value(forKey: "fechar") as! String)
                                 
                      }
@@ -280,6 +297,7 @@ if let dictionary = datos_recibidos as? [String: Any] {
                         self.bid_suario_envia = self.id_suario_envia
                         self.bfoto = self.foto
                         self.bfecha = self.fecha
+                        self.bid_suario_recibe = self.id_suario_recibe
 
                         self.collection.reloadData()
                     }
@@ -296,7 +314,10 @@ if let dictionary = datos_recibidos as? [String: Any] {
        
         detalle.id_envia = self.detalle
         detalle.nombre = self.nombredetalle
+            detalle.id_usuario_envia = self.idusuarioenvia
+            detalle.id_suario_recibe = self.idusuariorecibe
         }
+
 
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -314,6 +335,22 @@ if let dictionary = datos_recibidos as? [String: Any] {
     
     @IBAction func selecciones(_ sender: Any) {
         self.cargador.isHidden=false
+        self.id.removeAll()
+        self.nombre.removeAll()
+        self.id_suario_envia.removeAll()
+        self.foto.removeAll()
+        self.fecha.removeAll()
+        self.id_suario_recibe.removeAll()
+
+        self.bid = self.id
+        self.bnombre = self.nombre
+        self.bid_suario_envia = self.id_suario_envia
+        self.bfoto = self.foto
+        self.bfecha = self.fecha
+        self.bid_suario_recibe = self.id_suario_recibe
+
+        self.collection.reloadData()
+
         if select.selectedSegmentIndex==0 {
             obtenerrecibido=1
             consulta()

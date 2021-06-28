@@ -12,7 +12,7 @@ class SideMenuTableViewController: UITableViewController {
     var id=0
     var contenido=""
     var password=""
-    var url = "https://iim.eduflix.online/public/Login/?="
+    var url = "https://test-iim.eduflix.online/public/Login/?datos="
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -93,7 +93,7 @@ class SideMenuTableViewController: UITableViewController {
     }
     @IBAction func tareas(_ sender: Any) {
         // Encryption
-      let contenido = "\(id)"+",tareas"
+        let contenido = "\(id)"+",tareas"
         let datos = self.encrypt(plainText: contenido, password: password)
         if let url = URL(string: url+datos) {
             UIApplication.shared.open(url)

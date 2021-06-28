@@ -248,8 +248,8 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="19" id="gDn-QH-6I6"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="14"/>
-                                                            <color key="textColor" red="0.0" green="0.0" blue="0.40757140520000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="15"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calificación:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbv-Pi-seO">
@@ -271,8 +271,8 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="45" id="2f7-9i-5Ea"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
-                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="15"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="13" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4e-sb-6fE">
@@ -286,8 +286,8 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="19" id="uBh-ql-Ldb"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="14"/>
-                                                            <color key="textColor" red="0.0" green="0.0" blue="0.40757140520000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="12"/>
+                                                            <color key="textColor" red="0.57606649399999998" green="0.58362168069999998" blue="0.62508451939999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="highlightedColor" red="0.81867441500000004" green="0.0" blue="0.0076642297429999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l65-08-0ll">
@@ -1191,35 +1191,8 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="TkZ-5m-8gG" style="IBUITableViewCellStyleDefault" id="k3g-1m-Eo8" customClass="UITableViewVibrantCell" customModule="SideMenu">
-                                        <rect key="frame" x="0.0" y="453" width="414" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="k3g-1m-Eo8" id="2J2-lJ-6d3">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Lectura inteligente" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TkZ-5m-8gG">
-                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="15"/>
-                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zN6-0J-9zJ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" image="play.fill" catalog="system"/>
-                                                    <connections>
-                                                        <action selector="lectura:" destination="vNQ-Bb-cYa" eventType="touchUpInside" id="uch-sK-bqj"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="wfP-VS-q3z" style="IBUITableViewCellStyleDefault" id="QfZ-Rv-CEp" customClass="UITableViewVibrantCell" customModule="SideMenu">
-                                        <rect key="frame" x="0.0" y="496.5" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="453" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QfZ-Rv-CEp" id="NVT-XB-stm">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -2038,6 +2011,7 @@
                         <outlet property="alertas" destination="rmP-v8-Fv6" id="MzP-wg-60p"/>
                         <outlet property="cargador" destination="OVR-5P-1c7" id="nG2-j2-L4f"/>
                         <outlet property="collection" destination="MWY-2A-h2v" id="387-Fu-rXc"/>
+                        <outlet property="fondo" destination="vTy-jG-UaP" id="rPu-T1-HJo"/>
                         <outlet property="invitado" destination="xer-wL-RB7" id="FZr-D5-ObO"/>
                         <outlet property="select" destination="1ug-Na-1rd" id="Kf4-sD-uog"/>
                         <segue destination="i8m-rg-Jfw" kind="show" identifier="godetalle" id="AUn-DP-8nv"/>
@@ -3531,12 +3505,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="CBI-ww-F03"/>
+        <segue reference="2IA-CH-vrh"/>
         <segue reference="XWb-HV-MBd"/>
         <segue reference="Trg-N4-E3h"/>
         <segue reference="Sqg-Ci-Lmq"/>
         <segue reference="4B8-k7-0Im"/>
-        <segue reference="6C8-Zd-gIt"/>
+        <segue reference="g3k-V8-05K"/>
         <segue reference="Pe3-iW-CQb"/>
         <segue reference="KUs-ic-g5h"/>
     </inferredMetricsTieBreakers>

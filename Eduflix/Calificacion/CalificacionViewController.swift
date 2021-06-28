@@ -66,7 +66,6 @@ class CalificacionViewController: UIViewController, UITableViewDataSource, UITab
                          
 
                         }else{
-                            alertas.isHidden=true
                         }
                         self.invitado.isHidden = true
 

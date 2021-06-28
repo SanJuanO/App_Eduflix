@@ -51,7 +51,6 @@ class InicioViewController:     UIViewController,UICollectionViewDataSource, UIC
                          
 
                         }else{
-                            alertas.isHidden=true
                         }
                     }
         

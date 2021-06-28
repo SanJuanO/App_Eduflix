@@ -77,7 +77,7 @@ let usuario = UserDefaults.standard.string(forKey: "usuario")!
                  
 
                 }else{
-                    alertas.isHidden=true
+
                 }
                 self.invitado.isHidden = true
 

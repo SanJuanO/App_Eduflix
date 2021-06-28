@@ -20,6 +20,9 @@ class MensajeDetallesViewController: UIViewController,UICollectionViewDataSource
     var fecha:[String] = []
     var contenido:[String] = []
 var id_envia = 0
+    var id_usuario_envia = 0
+    var id_suario_recibe = 0
+
     var id_recibe = 0
     var nombre = ""
 
@@ -93,10 +96,12 @@ consulta()
     
     
     func consulta(){
-       let id_nivel = UserDefaults.standard.string(forKey: "id")!
-        let id = Int(id_nivel)
-        let datos_a_enviar = ["id_usuario_recibe": id as Any,"id_usuario_envia": id_envia as Any] as NSMutableDictionary
+      
+        
+        let datos_a_enviar = ["id_usuario_recibe": self.id_suario_recibe as Any,"id_usuario_envia": self.id_usuario_envia as Any] as NSMutableDictionary
 
+        
+        
         //ejecutamos la función arrayFromJson con los parámetros correspondientes (url archivo .php / datos a enviar)
         let dataJsonUrlClass = ConexionPost()
         dataJsonUrlClass.arrayFromJson(url2:"Mensajes/obtenerRecibidosPorIdEnviaRecibe",datos_enviados:datos_a_enviar){ (datos_recibidos) in

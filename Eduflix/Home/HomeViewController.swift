@@ -45,7 +45,6 @@ class HomeViewController: UIViewController,UICollectionViewDataSource, UICollect
                          
 
                         }else{
-                            alertas.isHidden=true
                         }
                     }else{
                      invitado=1
@@ -134,14 +133,15 @@ class HomeViewController: UIViewController,UICollectionViewDataSource, UICollect
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             // Encryption
-        let url = "https://iim.eduflix.online/public/Login/?="
+        let url = "https://test-iim.eduflix.online/public/Login/?datos="
 
         let    id = UserDefaults.standard.integer(forKey: "id")
 let           password = "Secretpasswordiim"
 
-        let contenido = "\(id)"+",cursos,"+"\(self.idarraycursos[indexPath.item])"
+        let contenido = "\(id)"+",curso,"+"\(self.idarraycursos[indexPath.item])"
             let datos = self.encrypt(plainText: contenido, password: password)
             if let url = URL(string: url+datos) {
+                
                 UIApplication.shared.open(url)
             }
             
