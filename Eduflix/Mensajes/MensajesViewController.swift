@@ -48,7 +48,8 @@ var bid_suario_envia:[Int] = []
         self.fondo.layer.cornerRadius = 15
         let usuario = UserDefaults.standard.string(forKey: "usuario")!
             if(usuario=="invitado"){
-                
+                self.fondo.isHidden = true
+
                 self.invitado.isHidden = false
                 
             }else{
@@ -63,6 +64,14 @@ var bid_suario_envia:[Int] = []
                 }
                 
                 self.invitado.isHidden = true
+                
+                let id_rol = UserDefaults.standard.integer(forKey: "id_rol")
+                if(id_rol != 3){
+                    self.invitado.isHidden = false
+                    self.collection.isHidden = false
+          
+                }
+                
     consulta()
            
             }
@@ -162,16 +171,35 @@ var bid_suario_envia:[Int] = []
             
         
             
-            cell.fecha.text = dateFormatter.string(from:date )
+            cell.fecha.text =  "Día " +  dateFormatter.string(from:date )
             
                 let imageUrl = URL(string:
                                                 "https://iim.eduflix.online/public/" +
                                                 bfoto[indexPath.row])
 
-                         if let url = imageUrl {
-                            
-                    cell.imagen.kf.setImage(with: url)
-
+            if let url2 = imageUrl {
+               let processor = DownsamplingImageProcessor(size: cell.imagen.bounds.size)
+                            |> RoundCornerImageProcessor(cornerRadius: 20)
+               cell.imagen.kf.setImage(
+                   with: url2,
+                   placeholder: UIImage(named: "user.png"),
+                   options: [
+                       .processor(processor),
+                       .scaleFactor(UIScreen.main.scale),
+                       .transition(.fade(1)),
+                       .cacheOriginalImage
+                   ])
+               {
+                   result in
+                   switch result {
+                   case .success(let value):
+                       print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                   case .failure(let error):
+                    
+                    print(error)
+                       cell.imagen.image = UIImage(named: "user.png")!
+                   }
+               }
                             cell.imagen.layer.cornerRadius = cell.imagen.bounds.size.width / 2.0
 
                  }

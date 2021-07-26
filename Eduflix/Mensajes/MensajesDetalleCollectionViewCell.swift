@@ -13,5 +13,6 @@ class MensajesDetalleCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var contenido: WKWebView!
     
+    @IBOutlet weak var responder: UIButton!
     
 }

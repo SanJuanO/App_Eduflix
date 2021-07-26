@@ -13,6 +13,7 @@ class SideMenuTableViewController: UITableViewController {
     var contenido=""
     var password=""
     var url = "https://test-iim.eduflix.online/public/Login/?datos="
+    let defaults = UserDefaults.standard
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -48,106 +49,153 @@ class SideMenuTableViewController: UITableViewController {
     
     @IBAction func home(_ sender: Any) {
         // Encryption
-      let contenido = "\(id)"+",home"
-        let datos = self.encrypt(plainText: contenido, password: password)
-        if let url = URL(string: url+datos) {
-            UIApplication.shared.open(url)
-        }
+        self.performSegue(withIdentifier: "comunicado", sender: self)
+
         
     }
     @IBAction func cursos(_ sender: Any) {
         // Encryption
+        let usuario = UserDefaults.standard.string(forKey: "usuario")!
+        if(usuario != "invitado"){
+
+            
       let contenido = "\(id)"+",cursos"
         let datos = self.encrypt(plainText: contenido, password: password)
         if let url = URL(string: url+datos) {
             UIApplication.shared.open(url)
         }
+        }
         
     }
     @IBAction func grupos(_ sender: Any) {
         // Encryption
+        let usuario = UserDefaults.standard.string(forKey: "usuario")!
+        if(usuario != "invitado"){
+
       let contenido = "\(id)"+",grupos"
         let datos = self.encrypt(plainText: contenido, password: password)
         if let url = URL(string: url+datos) {
             UIApplication.shared.open(url)
         }
+        }
         
     }
     @IBAction func conferencia(_ sender: Any) {
         // Encryption
-      let contenido = "\(id)"+",conferencia"
-        let datos = self.encrypt(plainText: contenido, password: password)
-        if let url = URL(string: url+datos) {
-            UIApplication.shared.open(url)
-        }
+        self.defaults.set(1, forKey: "conferencias")
+
+        self.performSegue(withIdentifier: "comunicado", sender: self)
+
         
     }
     @IBAction func foros(_ sender: Any) {
-        // Encryption
-      let contenido = "\(id)"+",foros"
-        let datos = self.encrypt(plainText: contenido, password: password)
-        if let url = URL(string: url+datos) {
-            UIApplication.shared.open(url)
-        }
+        self.performSegue(withIdentifier: "goforos", sender: self)
         
     }
     @IBAction func tareas(_ sender: Any) {
         // Encryption
+        let usuario = UserDefaults.standard.string(forKey: "usuario")!
+        if(usuario != "invitado"){
+
+            
         let contenido = "\(id)"+",tareas"
         let datos = self.encrypt(plainText: contenido, password: password)
         if let url = URL(string: url+datos) {
             UIApplication.shared.open(url)
         }
+        }
         
     }
     @IBAction func examen(_ sender: Any) {
-        // Encryption
-      let contenido = "\(id)"+",examen"
-        let datos = self.encrypt(plainText: contenido, password: password)
-        if let url = URL(string: url+datos) {
-            UIApplication.shared.open(url)
-        }
+        self.performSegue(withIdentifier: "goexamen", sender: self)
         
     }
     @IBAction func calendario(_ sender: Any) {
         // Encryption
+        let usuario = UserDefaults.standard.string(forKey: "usuario")!
+        if(usuario != "invitado"){
+
+            
       let contenido = "\(id)"+",calendario"
         let datos = self.encrypt(plainText: contenido, password: password)
         if let url = URL(string: url+datos) {
             UIApplication.shared.open(url)
         }
+        }
         
     }
     @IBAction func comunicado(_ sender: Any) {
         // Encryption
-      let contenido = "\(id)"+",comunicado"
-        let datos = self.encrypt(plainText: contenido, password: password)
-        if let url = URL(string: url+datos) {
-            UIApplication.shared.open(url)
-        }
+        
+        
+        self.defaults.set(1, forKey: "comunicado")
+
+        self.performSegue(withIdentifier: "comunicado", sender: self)
+
         
     }
     @IBAction func lectura(_ sender: Any) {
         // Encryption
+        let usuario = UserDefaults.standard.string(forKey: "usuario")!
+        if(usuario != "invitado"){
+
+            
       let contenido = "\(id)"+",lectura"
         let datos = self.encrypt(plainText: contenido, password: password)
         if let url = URL(string: url+datos) {
             UIApplication.shared.open(url)
         }
+        }
         
     }
     @IBAction func calificacion(_ sender: Any) {
         // Encryption
-      let contenido = "\(id)"+",calificacion"
-        let datos = self.encrypt(plainText: contenido, password: password)
-        if let url = URL(string: url+datos) {
-            UIApplication.shared.open(url)
-        }
-        
+        self.defaults.set(1, forKey: "calificaciones")
+
+        self.performSegue(withIdentifier: "comunicado", sender: self)
+
     }
     
-    
+    @IBAction func centro(_ sender: Any) {
+        // Encryption
+        let usuario = UserDefaults.standard.string(forKey: "usuario")!
+        if(usuario != "invitado"){
 
+        let contenido = "\(id)"+",calificacion"
+          let datos = self.encrypt(plainText: contenido, password: password)
+          if let url = URL(string: url+datos) {
+              UIApplication.shared.open(url)
+          }
+        }
+    }
+    @IBAction func videos(_ sender: Any) {
+        // Encryption
+        let usuario = UserDefaults.standard.string(forKey: "usuario")!
+        
+        if(usuario != "invitado"){
+
+            
+        let contenido = "\(id)"+",videos"
+          let datos = self.encrypt(plainText: contenido, password: password)
+          if let url = URL(string: url+datos) {
+              UIApplication.shared.open(url)
+          }
+        }
+    }
+
+    @IBAction func archivos(_ sender: Any) {
+        // Encryption
+        let usuario = UserDefaults.standard.string(forKey: "usuario")!
+     
+        if(usuario != "invitado"){
+
+        let contenido = "\(id)"+",archivos"
+          let datos = self.encrypt(plainText: contenido, password: password)
+          if let url = URL(string: url+datos) {
+              UIApplication.shared.open(url)
+          }
+        }
+    }
     func encrypt(plainText : String, password: String) -> String {
             let data: Data = plainText.data(using: .utf8)!
             let encryptedData = RNCryptor.encrypt(data: data, withPassword: password)

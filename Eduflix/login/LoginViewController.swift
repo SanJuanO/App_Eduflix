@@ -24,10 +24,17 @@ var id=0
     
     @IBOutlet weak var logo: UIImageView!
     
+    @IBOutlet weak var fondo: UIImageView!
+    
+    @IBOutlet weak var fondo2: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        fondo.layer.borderWidth = 1
+        fondo.layer.cornerRadius = 15
+        fondo2.layer.borderWidth = 1
+        fondo2.layer.cornerRadius = 15
+
         cargador.isHidden = true
         usuario.text = "dante.bouquet"
         password.text = "zoarciano"
@@ -255,8 +262,14 @@ var id=0
                
                DispatchQueue.main.async {//proceso principal
                    print("token actualizado")
-                              
-                self.performSegue(withIdentifier: "inicio", sender: self)
+                    
+                
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+             
+                    self.performSegue(withIdentifier: "inicio", sender: self)
+                
+                
+     
 
                
                    
@@ -320,12 +333,12 @@ if let dictionary = datos_recibidos as? [String: Any] {
                             
                             
                             if let dict = obj as? NSDictionary {
-                           
+                                idarraycursos.append(dict.value(forKey: "id_curso") as! Int)
                                 arraycursos.append(dict.value(forKey: "curso") as!     String
                                 )
                              
                               
-                                idarraycursos.append(dict.value(forKey: "id") as! Int)
+                        
                                 if let ur = dict.value(forKey: "profesor") as? String
                                 {
                                     profesores.append(dict.value(forKey: "profesor") as!     String
@@ -360,6 +373,6 @@ if let dictionary = datos_recibidos as? [String: Any] {
       
   navigationController?.setNavigationBarHidden(true, animated: false)
 
-        
+ 
     }
 }

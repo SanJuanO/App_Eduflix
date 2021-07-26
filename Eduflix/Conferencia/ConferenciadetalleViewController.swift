@@ -26,7 +26,7 @@ class ConferenciadetalleViewController: UIViewController {
 
         contenido.loadHTMLString(htmlString, baseURL: Bundle.main.bundleURL)
         
-        fecha.text=fechan
+        fecha.text =  "Día " +  fechan
 
     }
     @IBAction func exit(_ sender: Any) {

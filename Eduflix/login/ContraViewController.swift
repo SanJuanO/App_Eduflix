@@ -10,6 +10,7 @@ import UIKit
 class ContraViewController: UIViewController {
 
     @IBOutlet weak var boton: UIButton!
+    @IBOutlet weak var fondo: UITextField!
     @IBOutlet weak var correo: UITextField!
     @IBOutlet weak var cargador: UIActivityIndicatorView!
     override func viewDidLoad() {
@@ -17,6 +18,9 @@ class ContraViewController: UIViewController {
         boton.layer.cornerRadius = 15
         cargador.isHidden=true
         // Do any additional setup after loading the view.
+        fondo.layer.borderWidth = 1
+        fondo.layer.cornerRadius = 15
+    
     }
     
 

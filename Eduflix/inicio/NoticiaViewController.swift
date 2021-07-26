@@ -42,7 +42,7 @@ class NoticiaViewController: UIViewController {
         
         
         
-        fecha.text = dateFormatter.string(from:date )
+        fecha.text = "Día " +  dateFormatter.string(from:date )
 
     }
     @IBAction func exit(_ sender: Any) {

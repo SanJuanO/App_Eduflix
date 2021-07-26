@@ -7,14 +7,13 @@
 
 import UIKit
 import Kingfisher
-class CalificacionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,UISearchBarDelegate {
+class ExamenesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,UISearchBarDelegate {
   var curso=""
     
-    @IBOutlet weak var alertas: UIButton!
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
       
-  navigationController?.setNavigationBarHidden(true, animated: false)
+ // navigationController?.setNavigationBarHidden(true, animated: false)
 
         
     }
@@ -33,11 +32,9 @@ class CalificacionViewController: UIViewController, UITableViewDataSource, UITab
     var imagencursos:[String] = []
     var profesores:[String] = []
 
-    @IBAction func alerta(_ sender: Any) {
-    }
+ 
     
-    @IBOutlet weak var alerta: UIBarButtonItem!
-    
+    @IBOutlet weak var alertas: UIButton!
     
     @IBOutlet weak var textoinvitado: UILabel!
     
@@ -54,14 +51,15 @@ class CalificacionViewController: UIViewController, UITableViewDataSource, UITab
         let usuario = UserDefaults.standard.string(forKey: "usuario")!
         
                     if(usuario=="invitado"){
-                        self.tablacursos.isHidden = true
-
+                        
                         self.invitado.isHidden = false
                         invitadon=1
+                        self.tabla.isHidden = true
                     }else{
                         let mensajes  = UserDefaults.standard.integer(forKey: "mensajes")
                         if(mensajes>0){
-                            alerta.image = UIImage(named: "notificaciones.png")
+                            alertas.setImage(UIImage(named: "notificaciones.png"), for: .normal)
+                         
                             
                             alertas.setTitle("\(mensajes)", for: .normal)
                          
@@ -74,7 +72,7 @@ class CalificacionViewController: UIViewController, UITableViewDataSource, UITab
                         if(id_rol != 3){
                             self.invitado.isHidden = false
                             invitadon=1
-                            self.tablacursos.isHidden = true
+                            self.tabla.isHidden = true
 
                         self.textoinvitado.text="Estamos trabajando en esta sección"
                         }
@@ -110,15 +108,15 @@ class CalificacionViewController: UIViewController, UITableViewDataSource, UITab
         self.curso = self.arraycursos[indexPath.row] as String
 
         self.busqueda = self.idarraycursos[indexPath.row] as Int
-        self.performSegue(withIdentifier: "gocalificaciones", sender: self)
+        self.performSegue(withIdentifier: "goexamenes", sender: self)
 
     }
 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "gocalificaciones" {
+        if segue.identifier == "goexamenes" {
 
-            let detalle = segue.destination as! DetallecalificacionesViewController
+            let detalle = segue.destination as! DetalleExamenesViewController
        
         detalle.busqueda = self.busqueda
         detalle.curso = self.curso
@@ -128,7 +126,7 @@ class CalificacionViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellt", for: indexPath) as! CalifivacionTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellt", for: indexPath) as! TareasTableViewCell
 
         cell.profe.text  = profesores[indexPath.row]
 

@@ -11,7 +11,8 @@ import RNCryptor
 
 class HomeViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate {
     @IBOutlet weak var fondo: UIView!
-    
+    let defaults = UserDefaults.standard
+
     @IBOutlet weak var cardinfo: UIView!
     
     
@@ -50,7 +51,26 @@ class HomeViewController: UIViewController,UICollectionViewDataSource, UICollect
                      invitado=1
                     }
    
+        if isKeyPresentInUserDefaults(key: "comunicado") {
+            self.defaults.removeObject( forKey: "comunicado")
+            self.tabBarController?.selectedIndex = 1
 
+
+        }
+        
+        if isKeyPresentInUserDefaults(key: "conferencias") {
+            self.defaults.removeObject( forKey: "conferencias")
+            self.tabBarController?.selectedIndex = 2
+
+
+        }
+        if isKeyPresentInUserDefaults(key: "calificaciones") {
+            self.defaults.removeObject( forKey: "calificaciones")
+            self.tabBarController?.selectedIndex = 3
+
+
+        }
+      
         fondo.layer.cornerRadius = 15
         
         cardinfo.layer.cornerRadius = 15
@@ -95,11 +115,11 @@ class HomeViewController: UIViewController,UICollectionViewDataSource, UICollect
     }
     //Action
     @objc func tapDetected() {
-        self.tabBarController?.selectedIndex = 2
+        self.tabBarController?.selectedIndex = 1
 
     }
     @objc func tapDetected2() {
-        self.tabBarController?.selectedIndex = 1
+        self.tabBarController?.selectedIndex = 2
     }
 
     @objc func tapDetected3() {
@@ -111,6 +131,9 @@ class HomeViewController: UIViewController,UICollectionViewDataSource, UICollect
     }
 
 
+    func isKeyPresentInUserDefaults(key: String) -> Bool {
+        return UserDefaults.standard.string(forKey: key) != nil
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if(invitado==1){
@@ -157,19 +180,44 @@ let           password = "Secretpasswordiim"
         cell.profesor.text  = profesores[indexPath.row]
 
         cell.titulo?.text  = arraycursos[indexPath.row]
+        if(imagencursos[indexPath.row].count>5){
+        
         let imageUrl = URL(string:
                                         "https://iim.eduflix.online/public/" +
                                         imagencursos[indexPath.row])
 
-                 if let url = imageUrl {
-                    
-            cell.imagen.kf.setImage(with: url)
+                 if let url2 = imageUrl {
+                    let processor = DownsamplingImageProcessor(size: cell.imagen.bounds.size)
+                                 |> RoundCornerImageProcessor(cornerRadius: 20)
+                    cell.imagen.kf.setImage(
+                        with: url2,
+                        placeholder: UIImage(named: "placeholderImage"),
+                        options: [
+                            .processor(processor),
+                            .scaleFactor(UIScreen.main.scale),
+                            .transition(.fade(1)),
+                            .cacheOriginalImage
+                        ])
+                    {
+                        result in
+                        switch result {
+                        case .success(let value):
+                            print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                        case .failure(let error):
+                         
+                            cell.imagen.image = UIImage(named: "iv_placeholder.png")!
+                        }
+                    }
+      //      cell.imagen.kf.setImage(with: url)
 
                     cell.imagen.layer.cornerRadius = 15
                     cell.imagen.backgroundColor = UIColor.white
                     
                
                  }
+        
+        }
+        
         cell.layer.cornerRadius = 15
         cell.backgroundColor = UIColor.white
      

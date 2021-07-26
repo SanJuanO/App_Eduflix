@@ -7,6 +7,7 @@
 
 import UIKit
 import WebKit
+import RNCryptor
 class MensajeDetallesViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var cargador: UIActivityIndicatorView!
@@ -51,13 +52,32 @@ consulta()
         }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let    id = UserDefaults.standard.integer(forKey: "id")
 
+        if(self.id_suario_recibe == id){
+       
+        let url = "https://test-iim.eduflix.online/public/Login/?datos="
+
+let           password = "Secretpasswordiim"
+
+            let contenido = "\(id)"+",responder,"+"\(self.id[indexPath.item])"
+        
+            let datos = self.encrypt(plainText: contenido, password: password)
+            if let url = URL(string: url+datos) {
+                
+                UIApplication.shared.open(url)
+            }
+        }
+        
    
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        let    id = UserDefaults.standard.integer(forKey: "id")
+        
+      
         
         // get a reference to our storyboard cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath as IndexPath) as! MensajesDetalleCollectionViewCell
@@ -66,7 +86,7 @@ consulta()
         let htmlString:String! = "\(self.contenido  [indexPath.item])"
 
         cell.contenido.loadHTMLString(htmlString, baseURL: Bundle.main.bundleURL)
-        
+        cell.responder.layer.cornerRadius=10
             
         let dateFormatter = DateFormatter()
 
@@ -82,14 +102,20 @@ consulta()
         
     
         
-        cell.fecha.text = dateFormatter.string(from:date )
+        cell.fecha.text = "Día " +  dateFormatter.string(from:date )
         
         //   cell.contenido.text = (self.contenido  [indexPath.item] )
 
         cell.layer.cornerRadius = 15
         //cell.layer.borderWidth = 1
  
-    
+        if(self.id_suario_recibe != id){
+            cell.responder.isHidden=true
+        }else{
+            cell.responder.isHidden=false
+
+        }
+        
         
         return cell
     }
@@ -151,6 +177,14 @@ if let dictionary = datos_recibidos as? [String: Any] {
     @IBAction func exit(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
 
+    }
+    
+    
+    func encrypt(plainText : String, password: String) -> String {
+            let data: Data = plainText.data(using: .utf8)!
+            let encryptedData = RNCryptor.encrypt(data: data, withPassword: password)
+            let encryptedString : String = encryptedData.base64EncodedString() // getting base64encoded string of encrypted data.
+            return encryptedString
     }
 }
 

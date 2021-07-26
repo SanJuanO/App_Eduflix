@@ -115,7 +115,7 @@ class InicioViewController:     UIViewController,UICollectionViewDataSource, UIC
         
     
         
-        cell.fecha.text = dateFormatter.string(from:date )
+        cell.fecha.text =  "Día " +  dateFormatter.string(from:date )
         
      //   cell.contenido.text = (self.contenido  [indexPath.item] )
 
